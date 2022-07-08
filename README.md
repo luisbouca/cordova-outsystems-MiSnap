@@ -1,1 +1,1 @@
-# cordova-outsystems-alviereCamera
+# cordova-outsystems-MiSnap

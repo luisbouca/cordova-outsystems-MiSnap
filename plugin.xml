@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-outsystems-MiSnap" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>MiSnap</name>
+
+    <js-module name="MiSnap" src="www/MiSnap.js">
+        <clobbers target="MiSnap" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="MiSnap">
+                <param name="ios-package" value="MiSnap" />
+            </feature>
+        </config-file>
+
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="Payments"/>
+                <pod name="CardsSDK"/>
+                <pod name="RemittancesSDK"/>
+                <pod name="AccountsSDK"/>
+            </pods>
+        </podspec>
+
+        <source-file src="src/ios/MiSnap.m" />
+
+        <!--config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>uaepassdev</string>
+        </config-file-->
+
+        <hook type="before_plugin_install" src="hooks/ios/add_swift_support.js" />
+
+    </platform>
+
+    <platform name="android">
+
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="MiSnap">
+                <param name="android-package" value="com.outsystems.misnap.MiSnap" />
+            </feature>
+        </config-file>
+
+        <hook type="after_plugin_install" src="hooks/android/ReplaceAppid.js" />
+        <hook type="after_plugin_install" src="hooks/android/MainAppAdder.js" />
+
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
+        <source-file src="src/android/MiSnap.java" target-dir="src/com/outsystems/misnap" />
+
+
+		<framework src="libs/android/dependencies.gradle" custom="true" type="gradleReference" />
+
+        <resource-file src="libs/android/api-release.aar" target="libs/api-release.aar"/>
+        <resource-file src="libs/android/facialcapturecontroller-release.aar" target="libs/facialcapturecontroller-release.aar"/>
+        <resource-file src="libs/android/facialcapturescience-release.aar" target="libs/facialcapturescience-release.aar"/>
+        <resource-file src="libs/android/facialcaptureworkflow-release.aar" target="libs/facialcaptureworkflow-release.aar"/>
+        <resource-file src="libs/android/imageutils-release.aar" target="libs/imageutils-release.aar"/>
+        <resource-file src="libs/android/mibidata-release.aar" target="libs/mibidata-release.aar"/>
+        <resource-file src="libs/android/misnapcamera-release.aar" target="libs/misnapcamera-release.aar"/>
+    </platform>
+
+</plugin>
