@@ -34,27 +34,14 @@
             </feature>
         </config-file>
 
-        <hook type="after_plugin_install" src="hooks/android/ReplaceAppid.js" />
-        <hook type="after_plugin_install" src="hooks/android/MainAppAdder.js" />
-
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-
         <source-file src="src/android/MiSnap.java" target-dir="src/com/outsystems/misnap" />
 
-        <framework src="libs/android/dependencies.gradle" custom="true" type="gradleReference" />
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.CAMERA" />
             <uses-permission android:name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT" />
             <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
         </config-file>
 
-        <resource-file src="libs/android/api-release.aar" target="libs/api-release.aar"/>
-        <resource-file src="libs/android/facialcapturecontroller-release.aar" target="libs/facialcapturecontroller-release.aar"/>
-        <resource-file src="libs/android/facialcapturescience-release.aar" target="libs/facialcapturescience-release.aar"/>
-        <resource-file src="libs/android/facialcaptureworkflow-release.aar" target="libs/facialcaptureworkflow-release.aar"/>
-        <resource-file src="libs/android/imageutils-release.aar" target="libs/imageutils-release.aar"/>
-        <resource-file src="libs/android/mibidata-release.aar" target="libs/mibidata-release.aar"/>
-        <resource-file src="libs/android/misnapcamera-release.aar" target="libs/misnapcamera-release.aar"/>
     </platform>
 
 </plugin>
